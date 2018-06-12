@@ -81,14 +81,16 @@
 OneWire ds(DS18B20PIN);	// OneWire (для датчика температуры) (указываем PIN датчика)
 
 
-//	Переменная для интервала измерений
-unsigned long millis_int_getTemperature = 0;
-unsigned long millis_int_sendBluetoth = 0;
+/////////////////////////////// Переменная для интервала... ////////////
+unsigned long millis_int_getTemperature = 0;	// ...измерения температуры
+unsigned long millis_int_sendBluetoth = 0;		// ...отправки температуры
 
-int minValueTemp = 0;// Пользовательский минимум (адрес в EEPROM = 1)
-int maxValueTemp = 0;// Пользовательский максимум (адрес в EEPROM = 2)
-int minCharTemp = 0;// Знак пользовательского минумума (1+ || 2-) (адрес в EEPROM = 3)
-int maxCharTemp = 0;// Знак пользовательского максимума (1+ || 2-) (адрес в EEPROM = 4)
+////////////////////////////// Переменные для хранения пользовательских настроек
+int minValueTemp = 0;	// Пользовательский минимум 					(адрес в EEPROM = 1)
+int maxValueTemp = 0;	// Пользовательский максимум 					(адрес в EEPROM = 2)
+int minCharTemp = 0;	// Знак пользовательского минумума 	(1+ || 2-) 	(адрес в EEPROM = 3)
+int maxCharTemp = 0;	// Знак пользовательского максимума (1+ || 2-) 	(адрес в EEPROM = 4)
+
 
 float temperature = 0;
 
