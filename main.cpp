@@ -62,23 +62,23 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////Programm///////////////////////////////
+////////////////////////////////Programm////////////////////////////////
+
+/////////////////////////////// Подключение библиотек //////////////////
+#include <String.h>		// Для работы со строками
+#include <OneWire.h>	// Для работы с датчиком температуры
+#include <EEPROM.h>		// Для работы с энергонезависимой памятью Arduino
 
 
-#include <String.h>
-#include <OneWire.h>// Для работы с датчиком температуры
-#include <EEPROM.h>
+/////////////////////////////// Интервал измерений, мс /////////////////
+#define INTERVAL_GET_DATA 5000 		// Arduino считывает температуру каждые 5 секунд 
+#define INTERVAL_SEND_DATA 30000	// Arduino отправляет температуру серверу 30 секунд
+/////////////////////////////// Номера PIN`ов //////////////////////////
+#define DS18B20PIN 9	// PIN датчика температуры
 
 
-//	Интервал измерений, мс
-#define INTERVAL_GET_DATA 5000 // 5 секунд 
-#define INTERVAL_SEND_DATA 30000 // 30 секунд
-//	Номер пина датчика температуры
-#define DS18B20PIN 9	
-
-
-//	Создание объектов
-OneWire ds(DS18B20PIN);// OneWire (для датчика температуры)
+///////////////////////////////	Создание объектов //////////////////////
+OneWire ds(DS18B20PIN);	// OneWire (для датчика температуры) (указываем PIN датчика)
 
 
 //	Переменная для интервала измерений
@@ -181,7 +181,7 @@ void sendMax_Bluetooth()
 void decoder(String msg)
 {
 	if(msg == "temp")
-		takeTemperature();
+		sendTemperature();
 	else if(msg == "tempMIN?")
 		sendMin_Bluetooth();
 	else if(msg == "tempMAX?")
@@ -209,7 +209,7 @@ void decoder(String msg)
 
 
 // Выполнение команды сервера 'temp'
-void takeTemperature()
+void sendTemperature()
 {
 	temperature = get_data_ds18b20();
 
