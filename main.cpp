@@ -97,8 +97,7 @@ float temperature = 0;
 
 void setup(void)
 {
-	// запуск последовательного порта
-   	Serial.begin(9600);
+   	Serial.begin(9600);	// Запуск последовательного порта
    	//Serial.println("Enter AT commands:");
   	//BTSerial.begin(38400); // HC-05 default speed in AT command more
 
