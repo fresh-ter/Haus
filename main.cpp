@@ -180,7 +180,7 @@ void sendMax_Bluetooth()
 void decoder(String msg)
 {
 	if(msg == "temp")
-		sendTemperature();
+		tempCommand();
 	else if(msg == "tempMIN?")
 		sendMin_Bluetooth();
 	else if(msg == "tempMAX?")
@@ -209,8 +209,8 @@ void decoder(String msg)
 }
 
 
-// Выполнение команды сервера 'temp'
-void sendTemperature()
+// Выполнение команды сервера <temp>
+void tempCommand()
 {
 	temperature = get_data_ds18b20();
 
