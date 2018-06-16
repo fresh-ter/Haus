@@ -155,18 +155,24 @@ void sendDataAlarmMax_Bluetooth()
 ////////////////////////////////////////////////////////////////////////
 void sendMin_Bluetooth()
 {
+	/*
 	if(minCharTemp != 0)
 		Serial.print("MIN=");Serial.println(minValueTemp); // Вывод в монитор последовательного порта
 	else
 		Serial.print("MIN=");Serial.println("NONE"); // Вывод в монитор последовательного порта
+	*/
+	Serial.print("MIN=");Serial.println(minValueTemp); // Вывод в монитор последовательного порта
 }
 ////////////////////////////////////////////////////////////////////////
 void sendMax_Bluetooth()
 {
+	/*
 	if(minCharTemp != 0)
 		Serial.print("MAX=");Serial.println(maxValueTemp); // Вывод в монитор последовательного порта
 	else
 		Serial.print("MAX=");Serial.println("NONE"); // Вывод в монитор последовательного порта
+	*/
+	Serial.print("MAX=");Serial.println(maxValueTemp); // Вывод в монитор последовательного порта
 }
 ////////////////////////////////////////////////////////////////////////
 
