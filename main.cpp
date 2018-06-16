@@ -22,6 +22,8 @@
 //	tempMIN=-7						Пользовательский минимум = -7
 //	tempMAX=7						Пользовательский максимум = 7
 //	tempMAX=-7						Пользовательский максимум = -7
+//	tempMIN=NONE					Пользовательский минимум = NONE
+//	tempMAX=NONE					Пользовательский максимум = NONE
 //	alarm_tempMIN=7 				Тревога! Температура = 7 (ниже нормы)
 //	alarm_tempMIN=-7 				Тревога! Температура = -7 (ниже нормы)
 //	alarm_tempMAX=7 				Тревога! Температура = 7 (выше нормы)
@@ -141,12 +143,12 @@ void sendData_Bluetooth()
 ////////////////////////////////////////////////////////////////////////
 void sendDataAlarmMin_Bluetooth()
 {
-	Serial.print("tempMIN=");Serial.println(temperature); // Вывод в монитор последовательного порта
+	Serial.print("alarm_tempMIN=");Serial.println(temperature); // Вывод в монитор последовательного порта
 }
 ////////////////////////////////////////////////////////////////////////
 void sendDataAlarmMax_Bluetooth()
 {
-	Serial.print("tempMAX=");Serial.println(temperature); // Вывод в монитор последовательного порта
+	Serial.print("alarm_tempMAX=");Serial.println(temperature); // Вывод в монитор последовательного порта
 }
 ////////////////////////////////////////////////////////////////////////
 void sendMin_Bluetooth()
@@ -216,17 +218,25 @@ int monitor()
 {
 	if(temperature < minValueTemp)
 		return 23
-		//sendDataAlarmMin_Bluetooth();
-	if(temperature > maxValueTemp)
+	else if(temperature > maxValueTemp)
 		return 32
-		//sendDataAlarmMax_Bluetooth();
+	else
+		return 0
 }
 
 
 // Проверка температуры на срочность отправки
 void allarm(int i)
 {
-
+	switch(i)
+	{
+		case 23:
+			sendDataAlarmMin_Bluetooth()
+			break;
+		case 32:
+			sendDataAlarmMax_Bluetooth()
+			break;
+	}
 }
 
 // получение данных с датчика DS18B20
