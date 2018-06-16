@@ -186,6 +186,7 @@ void decoder(String msg)
 	else if(msg == "tempMAX?")
 		sendMax_Bluetooth();
 	else
+	{
 		String command;
 
 		for(int c = 0; c<10; c++) {
@@ -203,6 +204,7 @@ void decoder(String msg)
 		{
 
 		}
+	}
 
 }
 
