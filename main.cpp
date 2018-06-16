@@ -90,6 +90,7 @@ void setup(void)
    	//Serial.println("Enter AT commands:");
   	//BTSerial.begin(38400); // HC-05 default speed in AT command more
 
+   	/*
    	int a = EEPROM.read(0);
    	if(a != 255) {
    		minCharTemp = EEPROM.read(3);
@@ -106,6 +107,7 @@ void setup(void)
    		else if(maxCharTemp == 2)
    			maxValueTemp = -(EEPROM.read(2));
    	}
+   	*/
 }
 
 
