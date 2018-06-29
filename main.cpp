@@ -249,7 +249,7 @@ void allarm(int i)
 	}
 }
 
-// получение данных с датчика DS18B20
+// Получение данных с датчика DS18B20
 float get_data_ds18b20()
 {
 	byte i;
@@ -264,7 +264,7 @@ float get_data_ds18b20()
 		ds.reset_search();
 		return 999;
 	}
-	// вывод в монитор уникального адреса 1-Wire устройства
+	// Вывод в монитор уникального адреса 1-Wire устройства
 	for( i = 0; i < 8; i++)  {
 		Serial.print(address[i], HEX);
 		    Serial.print(" ");
@@ -279,19 +279,19 @@ float get_data_ds18b20()
 	}
 	ds.reset();
 	ds.select(address);
-	// запустить конвертацию температуры датчиком
+	// Запустить конвертацию температуры датчиком
 	ds.write(0x44,1);
-	delay(750); // ждем 750 мс
+	delay(750); // Ждем 750 мс
 	present = ds.reset();
 	ds.select(address);
 	ds.write(0xBE); 
 
-	// считываем ОЗУ датчика
+	// Считываем ОЗУ датчика
 	for ( i = 0; i < 9; i++)
 		data[i] = ds.read();
 
 	Temp = ((data[1]<<8)+data[0]);
-	// перевод в значение float
+	// Перевод в значение float
 	fTemp=1.0*Temp/16+(float(Temp%16))*1.0/16;
 
 	return fTemp;
